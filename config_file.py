@@ -37,31 +37,27 @@ dynamodb = boto3.resource('dynamodb')
 
 # Create the DynamoDB table.
 table = dynamodb.create_table(
-    TableName='users',
+    TableName='albums',
     KeySchema=[
         {
-            'AttributeName': 'username',
+            'AttributeName': 'title',
             'KeyType': 'HASH'
         },
-        {
-            'AttributeName': 'last_name',
+                {
+            'AttributeName': 'release_year',
             'KeyType': 'RANGE'
-        }
+        },
     ],
     AttributeDefinitions=[
         {
-            'AttributeName': 'username',
+            'AttributeName': 'genre',
             'AttributeType': 'S'
         },
-        {
-            'AttributeName': 'last_name',
+                {
+            'AttributeName': 'tracklist',
             'AttributeType': 'S'
         },
     ],
-    ProvisionedThroughput={
-        'ReadCapacityUnits': 5,
-        'WriteCapacityUnits': 5
-    }
 )
 
 # Wait until the table exists.

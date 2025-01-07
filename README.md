@@ -10,7 +10,7 @@ Prequisites:
 - Visual Studio Code
 - Python
 
-1. Clone repo to your local directory
+1. Clone repo to your local repository
 2. Install requirements.txt file
    pip install -r requirements.txt
 3. Open config_file.py to set up cloud infrastructure. This will create a bucket in S3 storage for your album covers and a database in DynamoDB for the album data.
