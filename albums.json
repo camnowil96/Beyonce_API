@@ -1,0 +1,93 @@
+ [
+    {
+        "title": "Dangerously in Love",
+        "releaseYear": "2003",
+        "genre": ["R&B, Pop, Hip Hop, Soul"],
+        "tracklist": ["Crazy in Love, Naughty Girl, Baby Boy, Hip Hop Star, Be with You, Me, Myself and I, Yes, Signs, Speechless, That's How I Like It, The Closer I Get To You, Dangerously In Love 2, Beyoncé Interlude, Gift From Virgo, Daddy"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Dangerously-in-Love.png"
+    },
+    {
+        "title": "B'Day",
+        "releaseYear": "2006",
+        "genre": ["R&B, Pop, Funk, Soul"],
+        "tracklist": ["Déjà Vu, Get Me Bodied, Suga Mama, Upgrade U, Ring the Alarm, Kitty Kat, Freakum Dress, Green Light, Irreplaceable, Resentment, Check On It, Encore For The Fans (Interlude), Get Me Bodied (Extended)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Bday.png"
+    },
+    {
+        "title": "I Am... Sasha Fierce",
+        "releaseYear": "2008",
+        "genre": ["R&B, Pop, Dance-Pop, Electropop"],
+        "tracklist": ["If I Were A Boy, Halo, Disappear, Broken-Hearted Girl, Ave Maria, Smash Into You, Satellites, That's Why You're Beautiful, Save The Hero, Single Ladies (Put A Ring On It), Radio, Diva, Sweet Dreams, Video Phone, Hello, Ego, Scared of Lonely, Why Don't You Love Me"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/I-am-Sasha-Fierce.png"
+    },
+    {
+        "title": "4",
+        "releaseYear": "2011",
+        "genre": ["R&B, Pop, Soul, Funk, Dance"],
+        "tracklist": ["Love on Top, Party, Schoolin' Life, Countdown, I Miss You, Dance For You, I Care, Rather Die Young, 1+1, End of Time, Run the World (Girls), Best Thing I Never Had, Start Over, I Was Here"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/4.png"
+    },
+    {
+        "title": "Beyoncé",
+        "releaseYear": "2013",
+        "genre": ["R&B, Pop, Hip Hop, Soul, Electro, Dancehall"],
+        "tracklist": ["Pretty Hurts, Haunted, Drunk In Love, Blow, No Angel, Partition, Jealous, Rocket, Mine, XO, ***Flawless, Superpower, Heaven, Blue, Pretty Hurts (video), Ghost (video), Haunted (video), Yonce (video), Partition (video), Jealous (video), Rocket (video), Mine (video), XO (video), ***Flawless (video), Superpower (video), Heaven (video), Blue (video), Grown Woman (video), Credits (video)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Self-Titled.png"
+    },
+    {
+        "title": "Lemonade",
+        "releaseYear": "2016",
+        "genre": ["R&B, Pop, Country, Rock, Blues, Hip Hop, Soul"],
+        "tracklist": ["Pray You Catch Me, Hold Up, Don't Hurt Yourself, Sorry, 6 Inch, Daddy Lessons, Love Drought, Sandcastles, Forward, Freedom, All Night, Formation, Sorry (Original Demo)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Lemonade.png"
+    },
+    {
+        "title": "Renaissance",
+        "releaseYear": "2022",
+        "genre": ["Dance, Pop, House, Disco, R&B"],
+        "tracklist": ["I'M THAT GIRL, COZY, ALIEN SUPERSTAR, CUFF IT, ENERGY, BREAK MY SOUL, CHURCH GIRL, PLASTIC OFF THE SOFA, VIRGO'S GROOVE, MOVE, HEATED, THIQUE, ALL UP IN YOUR MIND, AMERICA HAS A PROBLEM, PURE/HONEY, SUMMER RENAISSANCE"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Renaissance.png"
+    },
+    {
+        "title": "Cowboy Carter",
+        "releaseYear": "2024",
+        "genre": ["Hip Hop, Funk, Soul, Blues, Country"],
+        "tracklist": ["AMERIICAN REQUIEM, BLACKBIIRD, 16 CARRIAGES, PROTECTOR, MY ROSE, SMOKE HOUR WILLIE NELSON, TEXAS HOLD EM, BODYGUARD, DOLLY P, JOLENE, DAUGHTER, SPAGHETTII, ALLIIGATOR TEARS, SMOKE HOUR II, JUST FOR FUN, II MOST WANTED, LEVII'S JEANS, FLAMENCO, THE LINDA MARTELL SHOW, YA YA, OH LOUISIANA, DESERT EAGLE, RIIVERDANCE, II HANDS II HEAVEN, TYRANT, SWEET HONEY BUCKIIN', AMEN"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Cowboy-Carter.png"
+    },
+    {
+        "title": "Everything is Love",
+        "releaseYear": "2018",
+        "genre": ["Hop Hop, R&B, Pop, Trap"],
+        "tracklist": ["SUMMER, APESHIT, BOSS, NICE, 713, FRIENDS, HEARD ABOUT US, BLACK EFFECT, LOVEHAPPY"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Everything-is-Love.png"
+    },
+    {
+        "title": "The Lion King: The Gift",
+        "releaseYear": "2019",
+        "genre": ["Afrobeat, Pop, R&B, Afro-Fusion"],
+        "tracklist": ["balance (mufasa interlude), BIGGER, the stars (mufasa interlude), FIND YOUR WAY BACK, uncle scar (scar interlude), DON'T JEALOUS ME, danger (young simba & young nala interlude), JA ARA E, run away (scar & young simba interlude), NILE, new lesson (timon, pumbaa & young simba interlude), MOOD 4 EVA, reunited (Nala & Simba Interlude), WATER, BROWN SKIN GIRL, come home (nala interlude), KEYS TO THE KINGDOM, follow me (rafiki interlude), ALREADY, remember (mufasa interlude), OTHERSIDE, war (nala interlude), MY POWER, surrender (simba & scar interlude), SCAR, i'm home (mufasa, sarabi & simba interlude), SPIRIT"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/The-Gift.png"
+    },
+    {
+        "title": "Live at Wembley",
+        "releaseYear": "2004",
+        "genre": ["R&B, Pop, Soul, Funk"],
+        "tracklist": ["Wishing On a Star, What's It Gonna Be, My First Time, Krazy In Luv (Maurice’s Nu Soul Remix), Baby Boy (Junior’s World Mixshow), Naughty Girl (Calderone Quayle Club Mix), Naughty Girl (Lil' Kim Remix), Naïve (HR Crump Remix)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/Live-at-Wembley.png"
+    },
+    {
+        "title": "The Beyoncé Experience Live",
+        "releaseYear": "2007",
+        "genre": ["R&B, Pop, Soul, Funk, Dance"],
+        "tracklist": ["Crazy In Love (Crazy Mix) (The Beyonce Experience Live), Freakum Dress (Beyoncé Experience Live), Green Light Medley (The Beyonce Experience Live), Baby Boy (Reggae Medley) (The Beyonce Experience Live), Beautiful Liar (Beyoncé Experience Live), Naughty Girl Medley (The Beyonce Experience Live), Me, Myself and I (Beyoncé Experience Live), Dangerously In Love (The Beyonce Experience Live), Flaws and All (Beyoncé Experience Live), Destiny's Child Medley (The Beyoncé Experience Live), Speechless (Beyoncé Experience Live), Ring The Alarm (Beyoncé Experience Live), Suga Mama (Beyoncé Experience Live), Upgrade U (Beyoncé Experience Live), Bonnie And Clyde Medley (The Beyonce Experience Live), Check On It (Beyoncé Experience Live), Deja Vu (Beyoncé Experience Live), Get Me Bodied (Beyoncé Experience Live), Welcome to Hollywood (Beyoncé Experience Live), Dreamgirls Medley (The Beyoncé Experience Live), Irreplaceable (Beyoncé Experience Live)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/The-Beyonce-Experience.png"
+    },
+    {
+        "title": "I Am... Yours: An Intimate Performance at Wynn Las Vegas",
+        "releaseYear": "2009",
+        "genre": ["R&B, Pop, Soul, Acoustic"],
+        "tracklist": ["Hello (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Halo (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Irreplaceable (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Sweet Dreams Medley (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), If I Were a Boy (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Scared Of Lonely (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), That's Why You're Beautiful (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Satellites (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Resentment (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Déjà Vu Jazz Medley (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas), Love On Top (Live at I Am... Yours: An Intimate Performance At Wynn Las Vegas)"],
+        "cover_path": "/home/camnowil96/Documents/Beyonce_API/Album_Cover_Art/I-am-Yours.png"
+    }
+ ]
