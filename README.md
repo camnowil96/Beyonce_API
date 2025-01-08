@@ -1,6 +1,6 @@
 # Beyonce Discography #
 
-## Greetings Beyhive! ##
+## Greetings Beyhive'!' ##
 
 Please follow the below instructions to set up your Beyonce Discography API!
 
