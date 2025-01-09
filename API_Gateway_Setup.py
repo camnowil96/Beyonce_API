@@ -1,86 +1,105 @@
 import boto3
 
-def create_api_gateway():
-    # Initialize the clients
-    apigateway_client = boto3.client('apigatewayv2')
-    lambda_client = boto3.client('lambda')
-    region = "us-east-1"  # Your AWS region
-    aws_account_id = "051826710466"  # Your AWS account ID
+# Initialize AWS clients
+apig_client = boto3.client("apigateway")
+lambda_client = boto3.client("lambda")
+account_id = boto3.client("sts").get_caller_identity()["Account"]
 
-    # Create the API Gateway
-    api_name = "BeyonceAlbumsAPI"
-    api = apigateway_client.create_api(
-        Name=api_name,
-        ProtocolType='HTTP'
-    )
-    api_id = api['ApiId']
-    print(f"Created API Gateway with ID: {api_id}")
+# API Gateway configuration
+api_name = "BeyonceDiscographyAPI"
+api_stage = "prod"
 
-    # Define Lambda function ARNs (replace with your actual Lambda function ARNs)
-    get_albums_arn = "arn:aws:lambda:us-east-1:051826710466:function:GetAlbums"
-    get_albums_by_year_arn = "arn:aws:lambda:us-east-1:051826710466:function:GetAlbumsByYear"
-    get_album_summary_arn = "arn:aws:lambda:us-east-1:051826710466:function:GetAlbumSummary"
+# Define Lambda function names
+get_albums_function_name = "GetAlbums"
+get_albums_by_year_function_name = "GetAlbumsByYear"
+get_album_summary_function_name = "GetAlbumSummary"
 
-    # Set up integrations
-    def create_integration(function_arn):
-        return apigateway_client.create_integration(
-            ApiId=api_id,
-            IntegrationType='AWS_PROXY',
-            IntegrationUri=function_arn,
-            PayloadFormatVersion='2.0'
-        )['IntegrationId']
+# Construct Lambda ARNs
+get_albums_function_arn = (
+    f"arn:aws:lambda:{apig_client.meta.region_name}:{account_id}:function:{get_albums_function_name}"
+)
+get_albums_by_year_function_arn = (
+    f"arn:aws:lambda:{apig_client.meta.region_name}:{account_id}:function:{get_albums_by_year_function_name}"
+)
+get_album_summary_function_arn = (
+    f"arn:aws:lambda:{apig_client.meta.region_name}:{account_id}:function:{get_album_summary_function_name}"
+)
 
-    get_albums_integration_id = create_integration(get_albums_arn)
-    get_albums_by_year_integration_id = create_integration(get_albums_by_year_arn)
-    get_album_summary_integration_id = create_integration(get_album_summary_arn)
+# Step 1: Create the API Gateway REST API
+response = apig_client.create_rest_api(name=api_name)
+api_id = response["id"]
+print(f"API Gateway created with ID: {api_id}")
 
-    # Add routes
-    def create_route(route_key, integration_id):
-        apigateway_client.create_route(
-            ApiId=api_id,
-            RouteKey=route_key,
-            Target=f'integrations/{integration_id}'
-        )
+# Step 2: Get the root resource ID ("/")
+resources = apig_client.get_resources(restApiId=api_id)
+base_id = next(item["id"] for item in resources["items"] if item["path"] == "/")
+print(f"Root resource ID: {base_id}")
 
-    create_route('GET /albums', get_albums_integration_id)
-    create_route('GET /albums/year', get_albums_by_year_integration_id)
-    create_route('POST /albums/summary', get_album_summary_integration_id)
+# Step 3: Configure GET /albums (List all albums)
+apig_client.put_method(
+    restApiId=api_id,
+    resourceId=base_id,
+    httpMethod="GET",
+    authorizationType="NONE",
+)
+apig_client.put_integration(
+    restApiId=api_id,
+    resourceId=base_id,
+    httpMethod="GET",
+    type="AWS_PROXY",
+    integrationHttpMethod="POST",
+    uri=f"arn:aws:apigateway:{apig_client.meta.region_name}:lambda:path/2015-03-31/functions/{get_albums_function_arn}/invocations",
+)
+print("GET /albums configured.")
 
-    # Create stage directly if it doesn't exist
-    stage_name = 'dev'
-    try:
-        apigateway_client.create_stage(
-            ApiId=api_id,
-            StageName=stage_name,
-            AutoDeploy=True
-        )
-        print(f"Created new stage: {stage_name}")
-    except apigateway_client.exceptions.BadRequestException:
-        print(f"Stage '{stage_name}' already exists.")
+# Step 4: Add a new resource for /albums/year
+response = apig_client.create_resource(restApiId=api_id, parentId=base_id, pathPart="year")
+year_id = response["id"]
+print(f"Resource for /albums/year created with ID: {year_id}")
 
-    # Deploy the API
-    apigateway_client.create_deployment(ApiId=api_id, StageName=stage_name)
-    print(f"API deployed to stage: {stage_name}")
+# Step 5: Configure GET /albums/year (Get albums by year)
+apig_client.put_method(
+    restApiId=api_id,
+    resourceId=year_id,
+    httpMethod="GET",
+    authorizationType="NONE",
+    requestParameters={"method.request.querystring.year": True},  # Require 'year' param
+)
+apig_client.put_integration(
+    restApiId=api_id,
+    resourceId=year_id,
+    httpMethod="GET",
+    type="AWS_PROXY",
+    integrationHttpMethod="POST",
+    uri=f"arn:aws:apigateway:{apig_client.meta.region_name}:lambda:path/2015-03-31/functions/{get_albums_by_year_function_arn}/invocations",
+    requestParameters={"integration.request.querystring.year": "method.request.querystring.year"},
+)
+print("GET /albums/year configured.")
 
-    # Add permissions for API Gateway to invoke Lambda
-    def add_permission(function_name, api_id, stage_name, region, lambda_client):
-        lambda_client.add_permission(
-            FunctionName=function_name,
-            StatementId=f"{api_id}-{function_name}",
-            Action="lambda:InvokeFunction",
-            Principal="apigateway.amazonaws.com",
-            SourceArn=f"arn:aws:execute-api:{region}:{aws_account_id}:{api_id}/{stage_name}/*/*"  # Corrected SourceArn format
-        )
+# Step 6: Add a new resource for /albums/summary
+response = apig_client.create_resource(restApiId=api_id, parentId=base_id, pathPart="summary")
+summary_id = response["id"]
+print(f"Resource for /albums/summary created with ID: {summary_id}")
 
-    # Call add_permission for each Lambda function
-    add_permission("GetAlbums", api_id, stage_name, region, lambda_client)
-    add_permission("GetAlbumsByYear", api_id, stage_name, region, lambda_client)
-    add_permission("GetAlbumSummary", api_id, stage_name, region, lambda_client)
+# Step 7: Configure GET /albums/summary (Get album summary)
+apig_client.put_method(
+    restApiId=api_id,
+    resourceId=summary_id,
+    httpMethod="GET",
+    authorizationType="NONE",
+    requestParameters={"method.request.querystring.title": True},  # Require 'title' param
+)
+apig_client.put_integration(
+    restApiId=api_id,
+    resourceId=summary_id,
+    httpMethod="GET",
+    type="AWS_PROXY",
+    integrationHttpMethod="POST",
+    uri=f"arn:aws:apigateway:{apig_client.meta.region_name}:lambda:path/2015-03-31/functions/{get_album_summary_function_arn}/invocations",
+    requestParameters={"integration.request.querystring.title": "method.request.querystring.title"},
+)
+print("GET /albums/summary configured.")
 
-    print(f"API Gateway is set up and linked to Lambda functions!")
-
-# Call the create_api_gateway function to run the setup
-create_api_gateway()
-
-
-
+# Step 8: Deploy the API
+apig_client.create_deployment(restApiId=api_id, stageName=api_stage)
+print(f"API deployed to stage: {api_stage}")

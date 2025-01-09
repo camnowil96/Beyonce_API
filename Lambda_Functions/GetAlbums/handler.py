@@ -1,7 +1,7 @@
 import boto3
 import json
 
-def handler(event, context):
+def lamba_handler(event, context):
     """
     Fetches all albums from the DynamoDB table and returns them as a JSON response.
     """

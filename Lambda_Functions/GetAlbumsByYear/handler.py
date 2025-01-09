@@ -1,7 +1,7 @@
 import boto3
 import json
 
-def handler(event, context):
+def lambda_handler(event, context):
     """
     Fetches albums released in a specific year from the DynamoDB table.
     """
@@ -10,7 +10,7 @@ def handler(event, context):
     table = dynamodb.Table(table_name)
 
     # Get the year from query parameters
-    year = event.get('queryStringParameters', {}).get('releaseYear')
+    year = event.get('queryStringParameters', {}).get('release_year')
 
     if not year:
         return {
@@ -21,7 +21,7 @@ def handler(event, context):
     try:
         # Query the table for albums released in the specified year
         response = table.scan(
-            FilterExpression='releaseYear = :year',
+            FilterExpression='release_year = :year',
             ExpressionAttributeValues={':year': year}
         )
         bey_albums = response['Items']
