@@ -25,11 +25,20 @@ def lambda_handler(event, context):
             ExpressionAttributeValues={':year': year}
         )
         bey_albums = response['Items']
+        # Reorder the keys within each album in place
+        for idx, album in enumerate(bey_albums):
+            bey_albums[idx] = {
+                'title': album['title'],
+                'release_year': album['release_year'],
+                'genre': album['genre'],
+                'tracklist': album['tracklist'],
+                'album_url': album['album_url']
+            }
 
         return {
             'statusCode': 200,
             'headers': {'Content-Type': 'application/json'},
-            'body': json.dumps(albums)
+            'body': json.dumps(bey_albums)
         }
     except Exception as e:
         return {
